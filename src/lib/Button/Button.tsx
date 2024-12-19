@@ -8,7 +8,7 @@ import type {AsChildProps} from '../slot';
 import {Slot} from '../slot';
 import {SpinnerIcon} from '../icons';
 
-type Color = 'accent' | 'success' | 'destructive' | 'warning';
+type Color = 'accent' | 'destructive' | 'success';
 
 type Size = 'sm' | 'lg';
 

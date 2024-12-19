@@ -1,4 +1,3 @@
-# Six-Components
 
 ### Install dependencies
 ```

@@ -1,5 +1,3 @@
-export {Counter} from './CounterDemo';
-export {Weather} from './Weather';
 export {Button} from './Button';
 export {AlertDialog} from './AlertDialog';
 export {Avatar} from './Avatar';
