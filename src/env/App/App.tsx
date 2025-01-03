@@ -18,7 +18,7 @@ const App: FC = () => {
         document.body.classList.toggle('dark');
     };
     return (
-        <div className="containerwrapper dark:bg-slate-800">
+        <div className="containerwrapper bg-slate-100 dark:bg-slate-800">
             <div className="light flex flex-col gap-y-4">
                 <button onClick={() => darkModeHandler()}>
                     {
@@ -29,7 +29,7 @@ const App: FC = () => {
                     }
                 </button>
 
-                <h4>Primary</h4>
+                <h4>Accent (default)</h4>
 
                 <div className="flex items-center gap-x-2">
                     {/* DEFAULT */}
@@ -193,6 +193,176 @@ const App: FC = () => {
 
                     {/* PENDING + ISICON + OUTLINE */}
                     <Button isIconOnly isDisabled={true} variant="plain">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+                </div>
+
+                <h4>Primary</h4>
+
+                <div className="flex items-center gap-x-2">
+                    {/* DEFAULT */}
+                    <Button color="primary">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                        Button
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* DEFAULT + ISICON */}
+                    <Button color="primary" isIconOnly>
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* PENDING */}
+                    <Button color="primary" isPending={true}>
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                        Button
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* PENDING + ISICON */}
+                    <Button color="primary" isIconOnly isPending={true}>
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* DISABLED */}
+                    <Button color="primary" isDisabled={true}>
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                        Button
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* PENDING + ISICON */}
+                    <Button color="primary" isIconOnly isDisabled={true}>
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+                </div>
+
+                <div className="flex items-center gap-x-2">
+                    {/* DEFAULT + OUTLINE */}
+                    <Button color="primary" variant="outline">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                        Button
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* DEFAULT + ISICON + OUTLINE */}
+                    <Button color="primary" isIconOnly variant="outline">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* PENDING + OUTLINE */}
+                    <Button color="primary" isPending={true} variant="outline">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                        Button
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* PENDING + ISICON + OUTLINE */}
+                    <Button color="primary" isIconOnly isPending={true} variant="outline">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* IS DISABLED */}
+                    <Button color="primary" isDisabled={true} variant="outline">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                        Button
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* PENDING + ISICON + OUTLINE */}
+                    <Button color="primary" isIconOnly isDisabled={true} variant="outline">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+                </div>
+
+                <div className="flex items-center gap-x-2">
+                    {/* DEFAULT + OUTLINE */}
+                    <Button color="primary" variant="plain">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                        Button
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* DEFAULT + ISICON + OUTLINE */}
+                    <Button color="primary" isIconOnly variant="plain">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* PENDING + OUTLINE */}
+                    <Button color="primary" isPending={true} variant="plain">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                        Button
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* PENDING + ISICON + OUTLINE */}
+                    <Button color="primary" isIconOnly isPending={true} variant="plain">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* PENDING + OUTLINE */}
+                    <Button color="primary" isDisabled={true} variant="plain">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                        Button
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* PENDING + ISICON + OUTLINE */}
+                    <Button color="primary" isIconOnly isDisabled={true} variant="plain">
                         <AccessibleIcon>
                             <CloudUploadIcon />
                         </AccessibleIcon>
@@ -538,21 +708,194 @@ const App: FC = () => {
                         </AccessibleIcon>
                     </Button>
                 </div>
-                <div>
+
+                <h4>Warning</h4>
+
+                <div className="flex items-center gap-x-2">
+                    {/* DEFAULT */}
+                    <Button color="warning">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                        Button
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* DEFAULT + ISICON */}
+                    <Button color="warning" isIconOnly>
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* PENDING */}
+                    <Button color="warning" isPending={true}>
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                        Button
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* PENDING + ISICON */}
+                    <Button color="warning" isIconOnly isPending={true}>
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* DISABLED */}
+                    <Button color="warning" isDisabled={true}>
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                        Button
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* PENDING + ISICON */}
+                    <Button color="warning" isIconOnly isDisabled={true}>
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+                </div>
+
+                <div className="flex items-center gap-x-2">
+                    {/* DEFAULT + OUTLINE */}
+                    <Button color="warning" variant="outline">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                        Button
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* DEFAULT + ISICON + OUTLINE */}
+                    <Button color="warning" isIconOnly variant="outline">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
                     {/* PENDING + OUTLINE */}
-                    <Button color="success" size="sm" variant="outline">
+                    <Button color="warning" isPending={true} variant="outline">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                        Button
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* PENDING + ISICON + OUTLINE */}
+                    <Button color="warning" isIconOnly isPending={true} variant="outline">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* IS DISABLED */}
+                    <Button color="warning" isDisabled={true} variant="outline">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                        Button
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* PENDING + ISICON + OUTLINE */}
+                    <Button color="warning" isIconOnly isDisabled={true} variant="outline">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+                </div>
+
+                <div className="flex items-center gap-x-2">
+                    {/* DEFAULT + OUTLINE */}
+                    <Button color="warning" variant="plain">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                        Button
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* DEFAULT + ISICON + OUTLINE */}
+                    <Button color="warning" isIconOnly variant="plain">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* PENDING + OUTLINE */}
+                    <Button color="warning" isPending={true} variant="plain">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                        Button
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* PENDING + ISICON + OUTLINE */}
+                    <Button color="warning" isIconOnly isPending={true} variant="plain">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* PENDING + OUTLINE */}
+                    <Button color="warning" isDisabled={true} variant="plain">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                        Button
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+
+                    {/* PENDING + ISICON + OUTLINE */}
+                    <Button color="warning" isIconOnly isDisabled={true} variant="plain">
+                        <AccessibleIcon>
+                            <CloudUploadIcon />
+                        </AccessibleIcon>
+                    </Button>
+                </div>
+
+                <h4>Size Check</h4>
+
+                <div className="flex gap-2 items-center justify-center">
+                    {/* PENDING + OUTLINE */}
+                    <Button size="sm" variant="outline">
                         <AccessibleIcon>
                             <CloudUploadIcon />
                         </AccessibleIcon>
                         Upload to cloud
                     </Button>
-                    <Button color="success" variant="outline">
+                    <Button variant="outline">
                         <AccessibleIcon>
                             <CloudUploadIcon />
                         </AccessibleIcon>
                         Upload to cloud
                     </Button>
-                    <Button color="success" size="lg" variant="outline">
+                    <Button size="lg" variant="outline">
                         <AccessibleIcon>
                             <CloudUploadIcon />
                         </AccessibleIcon>

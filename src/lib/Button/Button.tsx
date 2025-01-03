@@ -8,7 +8,7 @@ import type {AsChildProps} from '../slot';
 import {Slot} from '../slot';
 import {SpinnerIcon} from '../icons';
 
-type Color = 'accent' | 'success' | 'destructive';
+type Color = 'accent' | 'success' | 'destructive' | 'warning' | 'primary';
 
 type Size = 'sm' | 'lg';
 
@@ -36,7 +36,7 @@ const buttonVariants = {
         'border border-[var(--btn-bg)] dark:border-none dark:[--border-with:0px]',
         'bg-[var(--btn-bg)] hover:bg-[var(--btn-bg-hover)] pressed:bg-[var(--btn-bg-hover)]',
         'shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]',
-        'text-white',
+        'text-[var(--btn-onColor)]',
     ],
     outline: [
         'border border-[var(--btn-color)]',
@@ -110,18 +110,26 @@ function buttonStyle({size, color, isIconOnly, variant = 'solid'}: BasicButtonPr
     const buttonBackground = {
         accent: ['[--btn-bg:theme(colors.accent)]', '[--btn-bg-hover:theme(colors.accentDimmed)]'],
         destructive: ['[--btn-bg:theme(colors.destructive)]', '[--btn-bg-hover:theme(colors.destructiveDimmed)]'],
-        // destructive: ['[--btn-bg:theme(colors.destructive)]', '[--btn-bg-hover:theme(colors.destructive-dimmed)]'],
         success: ['[--btn-bg:theme(colors.success)]', '[--btn-bg-hover:theme(colors.successDimmed)]'],
+        warning: ['[--btn-bg:theme(colors.warning)]', '[--btn-bg-hover:theme(colors.warningDimmed)]'],
+        primary: ['[--btn-bg:theme(colors.primary)]', '[--btn-bg-hover:theme(colors.primaryDimmed)]'],
     };
     const buttonColor = {
         foreground: '[--btn-color:theme(colors.foreground)]',
         accent: '[--btn-color:theme(colors.accent)]',
         destructive: '[--btn-color:theme(colors.destructive)]',
         success: '[--btn-color:theme(colors.success)]',
-        // foreground: '[--btn-color:--primary]',
-        // accent: '[--btn-color:--secondary]',
-        // destructive: '[--btn-color:--primary]',
-        // success: '[--btn-color:--secondary]',
+        warning: '[--btn-color:theme(colors.warning)]',
+        primary: '[--btn-color:theme(colors.primary)]',
+    };
+
+    const buttonOnColor = {
+        foreground: '[--btn-onColor:theme(colors.onBackground)]',
+        accent: '[--btn-onColor:theme(colors.onAccent)]',
+        destructive: '[--btn-onColor:theme(colors.onDestructive)]',
+        success: '[--btn-onColor:theme(colors.onSuccess)]',
+        warning: '[--btn-onColor:theme(colors.onWarning)]',
+        primary: '[--btn-onColor:theme(colors.onPrimary)]',
     };
 
     //This controls icon color
@@ -129,9 +137,12 @@ function buttonStyle({size, color, isIconOnly, variant = 'solid'}: BasicButtonPr
         !isIconOnly
             ? [
                   '',
-                  //   variant === 'solid' && '[&:not(:hover)_svg[data-ui=icon]:not([class*=text-])]:text-zinc-300',
-                  //   variant === 'outline' && '[&:not(:hover)_svg[data-ui=icon]:not([class*=text-])]:text-muted',
-                  //   variant === 'plain' && '[&:not(:hover)_svg[data-ui=icon]:not([class*=text-])]:text-muted',
+                  //   variant === 'solid' &&
+                  //       '[&:not(:hover)_svg[data-ui=icon]:not([class*=text-])]:text-[var(--btn-onColor)]',
+                  //   variant === 'outline' &&
+                  //       '[&:not(:hover)_svg[data-ui=icon]:not([class*=text-])]:text-[var(--btn-onColor)]',
+                  //   variant === 'plain' &&
+                  //       '[&:not(:hover)_svg[data-ui=icon]:not([class*=text-])]:text-[var(--btn-onColor)]',
               ]
             : [''],
     ];
@@ -139,7 +150,9 @@ function buttonStyle({size, color, isIconOnly, variant = 'solid'}: BasicButtonPr
     return [
         buttonVariants.base,
         buttonVariants[variant],
+        //If variant is solid access buttonBackground object using name as key(i.e. warning), otherwise use it to access buttonColor
         variant == 'solid' ? [buttonBackground[color ?? 'accent']] : [buttonColor[color ?? 'foreground']],
+        variant == 'solid' ? [buttonOnColor[color ?? 'accent']] : [buttonOnColor['foreground']],
         buttonSizes[buttonSize][buttonType],
         iconColor,
     ];
@@ -188,7 +201,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function 
                                         className={twMerge(
                                             'absolute',
                                             'text-foreground',
-                                            'group-data-[variant=solid]:text-zinc-300',
+                                            'group-data-[variant=solid]:text-[var(--btn-onColor)]',
                                             isCustomPending
                                                 ? 'group-data-[pending]:sr-only'
                                                 : 'group-data-[pending]:flex'
