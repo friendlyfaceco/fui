@@ -8,7 +8,7 @@ import type {AsChildProps} from '../slot';
 import {Slot} from '../slot';
 import {SpinnerIcon} from '../icons';
 
-type Color = 'accent' | 'destructive' | 'success';
+type Color = 'accent' | 'success' | 'destructive';
 
 type Size = 'sm' | 'lg';
 
@@ -108,21 +108,19 @@ function buttonStyle({size, color, isIconOnly, variant = 'solid'}: BasicButtonPr
     const buttonType = isIconOnly ? 'iconOnly' : 'button';
 
     const buttonBackground = {
-        accent: ['[--btn-bg:theme(colors.accent)]', '[--btn-bg-hover:theme(colors.accent/90%)]'],
-        destructive: ['[--btn-bg:theme(colors.destructive)]', '[--btn-bg-hover:theme(colors.destructive/90%)]'],
-        success: ['[--btn-bg:theme(colors.success)]', '[--btn-bg-hover:theme(colors.success/90%)]'],
-        warning: ['[--btn-bg:theme(colors.warning)]', '[--btn-bg-hover:theme(colors.warning/90%)]'],
+        accent: ['[--btn-bg:theme(colors.accent)]', '[--btn-bg-hover:theme(colors.accent-dimmed)]'],
+        destructive: ['[--btn-bg:theme(colors.destructive)]', '[--btn-bg-hover:theme(colors.destructive-dimmed)]'],
+        success: ['[--btn-bg:theme(colors.success)]', '[--btn-bg-hover:theme(colors.success-dimmed)]'],
     };
     const buttonColor = {
-        foreground: '[--btn-color:theme(colors.foreground)]',
-        accent: '[--btn-color:theme(colors.accent)]',
-        destructive: '[--btn-color:theme(colors.destructive)]',
-        success: '[--btn-color:theme(colors.success)]',
-        // foreground: '[--btn-color:--primary-color]',
-        // accent: '[--btn-color:--secondary-color]',
-        // destructive: '[--btn-color:--primary-color]',
-        // success: '[--btn-color:--secondary-color]',
-        // warning: '[--btn-color:--primary-color]',
+        // foreground: '[--btn-color:theme(colors.foreground)]',
+        // accent: '[--btn-color:theme(colors.accent)]',
+        // destructive: '[--btn-color:theme(colors.destructive)]',
+        // success: '[--btn-color:theme(colors.success)]',
+        foreground: '[--btn-color:--primary]',
+        accent: '[--btn-color:--secondary]',
+        destructive: '[--btn-color:--primary]',
+        success: '[--btn-color:--secondary]',
     };
 
     const iconColor = [
@@ -256,9 +254,3 @@ export function ButtonGroup({
         />
     );
 }
-
-// KNOWN PROBLEMS
-// 1- Icons with icon occupy more height, even when height is exactly the same
-//   - Temp Solution: Use Flex to align, this fixes the problem
-// 2- Medium Size Buttons adapt to Large when aligned next to bigger buttons
-//  - Temp Solution, dont use Big buttons nect to small buttons
