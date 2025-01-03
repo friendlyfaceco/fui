@@ -121,17 +121,17 @@
         --on-accent-container: var(--secondary-900);
 
         /* success */
-        --success: var(--success-800);
-        --success-dimmed: var(--success-600);
-        --success-muted: var(--success-400);
+        --success: var(--success-600);
+        --success-dimmed: var(--success-400);
+        --success-muted: var(--success-200);
         --on-success: var(--success-0);
         --success-container: var(--success-50);
         --on-success-container: var(--success-900);
 
         /* destructive */
-        --destructive: var(--destructive-800);
-        --destructive-dimmed: var(--destructive-600);
-        --destructive-muted: var(--destructive-400);
+        --destructive: var(--destructive-400);
+        --destructive-dimmed: var(--destructive-300);
+        --destructive-muted: var(--destructive-200);
         --on-destructive: var(--destructive-0);
         --destructive-container: var(--destructive-50);
         --on-destructive-container: var(--destructive-900);
@@ -139,7 +139,7 @@
         /* warning */
         --warning: var(--warning-800);
         --warning-dimmed: var(--warning-600);
-        --warning-muted: var(--warning-400);
+        --warning-muted: var(--warning-300);
         --on-warning: var(--warning-0);
         --warning-container: var(--warning-50);
         --on-warning-container: var(--warning-900);
