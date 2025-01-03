@@ -15,14 +15,15 @@ export default {
     theme: {
         extend: {
             colors: {
-                background: 'rgb(var(--background))',
-                foreground: 'rgb(var(--foreground))',
-                accent: 'rgb(var(--accent))',
-                success: 'rgb(var(--success))',
-                destructive: 'rgb(var(--destructive))',
-                warning: 'rgb(var(--warning))',
-                muted: 'rgb(var(--muted))',
-                border: 'rgb(var(--border))',
+                background: 'var(--background)',
+                foreground: 'var(--foreground)',
+                primary: 'var(--primary)',
+                accent: 'var(--accent)',
+                success: 'var(--success)',
+                destructive: 'var(--destructive)',
+                warning: 'var(--warning)',
+                muted: 'var(--muted)',
+                border: 'var(--border)',
             },
         },
     },
