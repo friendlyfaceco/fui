@@ -39,7 +39,7 @@ const buttonVariants = {
         'text-white',
     ],
     outline: [
-        'border border-zinc-950/10 dark:border-white/15 border-b-zinc-950/15 dark:border-b-white/20',
+        'border border-[var(--btn-color)]',
         'hover:bg-zinc-50 pressed:bg-zinc-50 dark:hover:bg-zinc-800 dark:pressed:bg-zinc-800',
         'shadow-sm',
         'text-[var(--btn-color)]',
@@ -108,26 +108,32 @@ function buttonStyle({size, color, isIconOnly, variant = 'solid'}: BasicButtonPr
     const buttonType = isIconOnly ? 'iconOnly' : 'button';
 
     const buttonBackground = {
-        accent: ['[--btn-bg:theme(colors.accent)]', '[--btn-bg-hover:theme(colors.accent-dimmed)]'],
-        destructive: ['[--btn-bg:theme(colors.destructive)]', '[--btn-bg-hover:theme(colors.destructive-dimmed)]'],
-        success: ['[--btn-bg:theme(colors.success)]', '[--btn-bg-hover:theme(colors.success-dimmed)]'],
+        accent: ['[--btn-bg:theme(colors.accent)]', '[--btn-bg-hover:theme(colors.accentDimmed)]'],
+        destructive: ['[--btn-bg:theme(colors.destructive)]', '[--btn-bg-hover:theme(colors.destructiveDimmed)]'],
+        // destructive: ['[--btn-bg:theme(colors.destructive)]', '[--btn-bg-hover:theme(colors.destructive-dimmed)]'],
+        success: ['[--btn-bg:theme(colors.success)]', '[--btn-bg-hover:theme(colors.successDimmed)]'],
     };
     const buttonColor = {
-        // foreground: '[--btn-color:theme(colors.foreground)]',
-        // accent: '[--btn-color:theme(colors.accent)]',
-        // destructive: '[--btn-color:theme(colors.destructive)]',
-        // success: '[--btn-color:theme(colors.success)]',
-        foreground: '[--btn-color:--primary]',
-        accent: '[--btn-color:--secondary]',
-        destructive: '[--btn-color:--primary]',
-        success: '[--btn-color:--secondary]',
+        foreground: '[--btn-color:theme(colors.foreground)]',
+        accent: '[--btn-color:theme(colors.accent)]',
+        destructive: '[--btn-color:theme(colors.destructive)]',
+        success: '[--btn-color:theme(colors.success)]',
+        // foreground: '[--btn-color:--primary]',
+        // accent: '[--btn-color:--secondary]',
+        // destructive: '[--btn-color:--primary]',
+        // success: '[--btn-color:--secondary]',
     };
 
+    //This controls icon color
     const iconColor = [
-        !isIconOnly && [
-            variant === 'solid' && '[&:not(:hover)_svg[data-ui=icon]:not([class*=text-])]:text-zinc-300',
-            variant === 'outline' && '[&:not(:hover)_svg[data-ui=icon]:not([class*=text-])]:text-muted',
-        ],
+        !isIconOnly
+            ? [
+                  '',
+                  //   variant === 'solid' && '[&:not(:hover)_svg[data-ui=icon]:not([class*=text-])]:text-zinc-300',
+                  //   variant === 'outline' && '[&:not(:hover)_svg[data-ui=icon]:not([class*=text-])]:text-muted',
+                  //   variant === 'plain' && '[&:not(:hover)_svg[data-ui=icon]:not([class*=text-])]:text-muted',
+              ]
+            : [''],
     ];
 
     return [
@@ -164,9 +170,12 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function 
                 data-variant={variant}
                 className={composeTailwindRenderProps(props.className, [
                     buttonStyle({size, color, isIconOnly, variant}),
+                    //on plain, icon is same color as text
                     focusVisibleOutlineStyle,
-                    'disabled:opacity-50',
+                    'disabled:opacity-20',
+                    'disabled:cursor-not-allowed',
                     'data-[pending]:opacity-75',
+                    'data-[pending]:cursor-wait',
                     !isCustomPending && 'data-[pending]:text-transparent',
                 ])}>
                 {renderProps => {
@@ -185,7 +194,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function 
                                                 : 'group-data-[pending]:flex'
                                         )}
                                     />
-                                    <span className="contents" {...(renderProps.isPending && {'aria-hidden': true})}>
+                                    <span
+                                        className="contents"
+                                        {...(renderProps.isPending && {'aria-hidden': true})}
+                                        style={{color: 'inherit'}}>
                                         {typeof children === 'function' ? children(renderProps) : children}
                                     </span>
                                 </>
