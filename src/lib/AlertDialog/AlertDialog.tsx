@@ -5,13 +5,24 @@ import type {DialogProps as RACDialogProps, ModalOverlayProps as RACModalOverlay
 import {ModalOverlay as RACModalOverlay, Modal as RACModal} from 'react-aria-components';
 import {OverlayTriggerStateContext, Dialog as RACDialog} from 'react-aria-components';
 
-import classes from './AlertDialog.module.css';
 import {XIcon} from '../icons';
 import {composeTailwindRenderProps} from '../utils';
 import {Button} from '../Button';
 import type {ButtonWithoutAsChildProps} from '../Button/Button';
 import type {HeadingProps} from '../Heading/Heading';
 import {Heading} from '../Heading/Heading';
+
+// This should be called Dialog COmponents because it defines styled RAC components for Dialogs
+//Its also widely used in Dialog component
+// <DialogHeader/>
+// <DialogBody/>
+// <DialogFooter/>
+// <DialogCloseButton/>
+// <DialogTitle/>
+// <Modal/> (including Drawer)
+//
+//Questions:
+//- Should we have a strict dedicated AlertDialog Component
 
 export type Props = {
     /** Set initial value */
@@ -24,17 +35,16 @@ export type DialogProps = {
 
 export const AlertDialog: FC<DialogProps> = () => {
     return (
-        <div className={classes.alertDialog}>
-            <h2 className={classes.header}>Counter</h2>
-            <button className={classes.button} type="button">
-                Increment by one
-            </button>
+        <div>
+            <h2>Delete file</h2>
+            <button type="button">Increment by one</button>
             <div>
                 Total value: <strong></strong>
             </div>
         </div>
     );
 };
+
 export function Dialog({role, alert = false, ...props}: DialogProps) {
     return (
         <RACDialog
@@ -44,6 +54,7 @@ export function Dialog({role, alert = false, ...props}: DialogProps) {
         />
     );
 }
+
 type DialogHeaderProps = HeadingProps;
 export function DialogHeader({className, ...props}: DialogHeaderProps) {
     const headerRef = React.useRef<HTMLHeadingElement>(null);

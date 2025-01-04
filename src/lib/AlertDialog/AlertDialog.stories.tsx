@@ -2,20 +2,38 @@ import React from 'react';
 import type {Meta} from '@storybook/react';
 import {DialogTrigger} from 'react-aria-components';
 
-import {AlertDialog, Dialog, DialogBody, DialogCloseButton, DialogFooter, DialogHeader, Modal} from './AlertDialog';
+import {Dialog, DialogBody, DialogCloseButton, DialogFooter, DialogHeader, Modal} from './AlertDialog';
 import {Button} from '../Button';
 const meta = {
-    title: 'Example/AlertDialog',
-    component: AlertDialog,
+    title: 'Component/Dialog',
+    component: Dialog,
     parameters: {
         // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
         layout: 'centered',
     },
-} as Meta<typeof AlertDialog>;
+} as Meta<typeof Dialog>;
 
 export default meta;
 
 export const BasicExample = () => {
+    return (
+        <>
+            <Dialog alert className="bg-slate-50">
+                <DialogHeader>Dialog Header</DialogHeader>
+                <DialogBody>
+                    Dialog Body: Are you sure? This application will no longer be accessible and any existing sessions
+                    will be expired.
+                </DialogBody>
+                <DialogFooter>
+                    <DialogCloseButton>Cancel</DialogCloseButton>
+                    <Button color="destructive"> Revoke access</Button>
+                </DialogFooter>
+            </Dialog>
+        </>
+    );
+};
+
+export const OnPressExample = () => {
     const [isOpen, setIsOpen] = React.useState(false);
 
     return (
@@ -42,7 +60,7 @@ export const BasicExample = () => {
     );
 };
 
-export const WhenToUseAlertDialogs = () => {
+export const TriggerExample = () => {
     return (
         <DialogTrigger>
             <Button>About</Button>
@@ -58,10 +76,38 @@ export const WhenToUseAlertDialogs = () => {
         </DialogTrigger>
     );
 };
-WhenToUseAlertDialogs.parameters = {
+TriggerExample.parameters = {
     docs: {
         description: {
             story: 'Alert dialogs are interruptive, so they\'re best for displaying important information that users need to acknowledge before moving forward with a task or workflow. Use them only when absolutely necessary. Use <a href="./?path=/docs/dialog--docs" target="_blank">`Dialog`</a> for low-signal notifications or excessive confirmations.',
         },
     },
+};
+
+export const CustomContentExample = () => {
+    const [isOpen, setIsOpen] = React.useState(false);
+
+    const CustomContent = () => {
+        return (
+            <div className="">
+                <h2 className="">This is some custom modal</h2>
+
+                <DialogCloseButton>Cancel</DialogCloseButton>
+                <DialogCloseButton variant="solid" color="success">
+                    Go
+                </DialogCloseButton>
+            </div>
+        );
+    };
+
+    return (
+        <>
+            <Button color="warning" onPress={() => setIsOpen(true)}>
+                Custom Content
+            </Button>
+            <Modal isOpen={isOpen} onOpenChange={setIsOpen}>
+                <CustomContent />
+            </Modal>
+        </>
+    );
 };

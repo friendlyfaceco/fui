@@ -1,5 +1,5 @@
 export {Button} from './Button';
-export {AlertDialog} from './AlertDialog';
+//export {AlertDialog} from './AlertDialog';
 export {Avatar} from './Avatar';
 export {CheckBox} from './CheckBox';
 export {ClipBoard} from './ClipBoard';

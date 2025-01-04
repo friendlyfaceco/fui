@@ -15,7 +15,7 @@ import './Dialog.module.css';
 import {MenuItem} from '../Menu';
 
 const meta = {
-    title: 'Example/Dialog',
+    title: 'Patterns/DialogPatterns',
     component: Dialog,
     parameters: {
         // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
