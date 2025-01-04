@@ -18,7 +18,7 @@ export default meta;
 export const BasicExample = () => {
     return (
         <>
-            <Dialog alert className="bg-slate-50">
+            <Dialog alert>
                 <DialogHeader>Dialog Header</DialogHeader>
                 <DialogBody>
                     Dialog Body: Are you sure? This application will no longer be accessible and any existing sessions
@@ -26,6 +26,7 @@ export const BasicExample = () => {
                 </DialogBody>
                 <DialogFooter>
                     <DialogCloseButton>Cancel</DialogCloseButton>
+                    <Button> Cancel</Button>
                     <Button color="destructive"> Revoke access</Button>
                 </DialogFooter>
             </Dialog>

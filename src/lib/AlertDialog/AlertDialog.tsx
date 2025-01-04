@@ -50,7 +50,9 @@ export function Dialog({role, alert = false, ...props}: DialogProps) {
         <RACDialog
             {...props}
             role={(role ?? alert) ? 'alertdialog' : 'dialog'}
-            className={twMerge('relative flex max-h-[inherit] flex-col overflow-hidden outline-none', props.className)}
+            className={twMerge(
+                'relative flex max-h-[inherit] flex-col overflow-hidden outline-none bg-[var(--surface-bright)]'
+            )}
         />
     );
 }
@@ -78,11 +80,15 @@ export function DialogHeader({className, ...props}: DialogHeaderProps) {
     }, []);
 
     return typeof props.children === 'string' ? (
-        <DialogTitle {...props} ref={headerRef} className={twMerge('px-6 pb-2 pt-6 dark:text-white', className)} />
+        <DialogTitle
+            {...props}
+            ref={headerRef}
+            className={twMerge('px-6 pb-2 pt-6 text-[var(--on-surface)] ', className)}
+        />
     ) : (
         <div
             ref={headerRef}
-            className={twMerge('relative flex w-full items-center px-6 pb-2 pt-6 dark:text-white', className)}
+            className={twMerge('relative flex w-full items-center px-6 pb-2 pt-6 text-[var(--on-surface)] ', className)}
             {...props}>
             {props.children}
         </div>
@@ -94,7 +100,7 @@ export function DialogBody({className, children, ...props}: JSX.IntrinsicElement
         <div
             {...props}
             className={twMerge(
-                'flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding)-var(--dialog-header-height,0px)-var(--dialog-footer-height,0px))] flex-1 flex-col gap-2 dark:text-white overflow-auto px-6',
+                'flex max-h-[calc(var(--visual-viewport-height)-var(--visual-viewport-vertical-padding)-var(--dialog-header-height,0px)-var(--dialog-footer-height,0px))] flex-1 flex-col gap-2 text-[var(--on-surface)] overflow-auto px-6',
                 className
             )}>
             {typeof children === 'string' ? <span>{children}</span> : children}
@@ -219,7 +225,7 @@ export function Modal({classNames, keepCentered = false, ...props}: ModalProps) 
             className={composeTailwindRenderProps(classNames?.modalOverlay, [
                 'fixed left-0 top-0 isolate z-20',
                 'h-[--visual-viewport-height] w-full',
-                'bg-zinc-950/40 dark:bg-zinc-950/50',
+                'bg-zinc-950/40 dark:bg-zinc-950/50 ',
                 'flex',
                 'items-center',
                 'text-center',
@@ -261,7 +267,7 @@ export function Modal({classNames, keepCentered = false, ...props}: ModalProps) 
                     'max-h-full w-full overflow-hidden',
                     'text-left align-middle',
                     'shadow-lg',
-                    'bg-white dark:bg-zinc-900',
+                    'bg-[var(--surface)]',
                     'dark:ring-1 dark:ring-white/10',
 
                     props.size
