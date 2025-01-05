@@ -164,7 +164,6 @@ export function DatePickerInput(props: DateInputProps) {
                 className={[
                     'max-w-none rounded-xl border-2 border-[var(--border)]',
                     'bg-[var(--surface)]',
-                    'border-success',
                     'ring-[var(--surface-muted)]',
                 ].join(' ')}
                 placement="bottom">
@@ -203,7 +202,6 @@ export function DatePickerButton({className, children}: {className?: string; chi
                 className={[
                     'max-w-none rounded-xl border-2 border-[var(--border)]',
                     'bg-[var(--surface)]',
-                    'border-success',
                     'ring-[var(--surface-muted)]',
                 ].join(' ')}
                 placement="bottom">

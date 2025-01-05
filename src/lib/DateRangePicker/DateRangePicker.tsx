@@ -85,7 +85,11 @@ export function DateRangePickerInput() {
                 </Button>
             </Group>
             <Popover
-                className={['max-w-none', ' bg-[var(--surface)]', ' bg-[var(--surface-muted)]'].join(' ')}
+                className={[
+                    'max-w-none rounded-xl border-2 border-[var(--border)]',
+                    'bg-[var(--surface)]',
+                    'ring-[var(--surface-muted)]',
+                ].join(' ')}
                 placement="bottom">
                 <Dialog className="overflow-auto p-3">
                     <RangeCalendar />
@@ -111,7 +115,7 @@ export function RangeCalendar<T extends DateValue>({errorMessage, ...props}: Ran
                             className={[
                                 'group size-9 cursor-default text-sm outline-none text-[var(--on-surface-dimmed)]',
                                 'selected:bg-[var(--accent)]',
-                                'invalid:selected:bg-[var(--destructive-dimmed)] dark:invalid:selected:bg-[var(--destructive)]',
+                                'invalid:selected:bg-[var(--destructive-dimmed)]',
                                 'selection-start:rounded-s-lg',
                                 'selection-end:rounded-e-lg',
                                 '[td:first-child_&]:rounded-s-lg [td:last-child_&]:rounded-e-lg',
@@ -123,51 +127,49 @@ export function RangeCalendar<T extends DateValue>({errorMessage, ...props}: Ran
                                         'flex size-[calc(theme(size.9)-1px)] items-center justify-center',
                                         'group-hover:rounded-lg',
                                         'group-hover:bg-zinc-100',
-                                        'dark:group-hover:bg-zinc-700',
-                                        'group-pressed:bg-accent/90',
+                                        'group-hover:bg-[var(--accent-muted)]',
+                                        'group-hover:text-[var(--on-accent)]',
+                                        'group-pressedr:bg-[var(--accent)]',
 
                                         // selected
-                                        'group-selected:group-hover:bg-accent',
-                                        'group-selected:group-hover:text-white',
-                                        'group-selected:dark:group-hover:bg-accent',
-                                        'group-selected:group-pressed:bg-accent',
-                                        'group-selected:group-pressed:text-white',
+                                        'group-selected:group-hover:bg-[var(--accent)]',
+                                        'group-selected:group-hover:text-[var(--on-accent)]',
+                                        'group-selected:group-pressed:bg-[var(--primary)]',
+                                        'group-selected:group-pressed:text-[var(--on-primary)]',
 
                                         // disabled
                                         'group-disabled:opacity-50',
 
                                         // unavailable
-                                        'group-unavailable:text-destructive',
-                                        'group-unavailable:decoration-destructive',
+                                        'group-unavailable:text-[var(--destructive)]',
+                                        'group-unavailable:decoration-[var(--destructive)]',
                                         'group-unavailable:line-through',
 
                                         // selection start
                                         'group-selected:group-selection-start:border',
                                         'group-selected:group-selection-start:dark:border-0',
-                                        'group-selected:group-selection-start:border-accent',
+                                        'group-selected:group-selection-start:border-[var(--accent)]',
                                         'group-selected:group-selection-start:rounded-lg',
-                                        'group-selected:group-selection-start:bg-accent',
-                                        'group-selected:group-selection-start:text-white',
+                                        'group-selected:group-selection-start:bg-[var(--accent)]',
+                                        'group-selected:group-selection-start:text-[var(--on-accent)]',
                                         'group-selected:group-selection-start:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]',
-                                        'group-selected:group-selection-start:group-hover:bg-accent/90',
-                                        'group-selected:group-selection-start:dark:group-hover:bg-accent/90',
-                                        'group-selected:group-selection-start:group-invalid:border-destructive',
-                                        'group-selected:group-selection-start:group-invalid:bg-destructive',
-                                        'group-selected:group-selection-start:group-invalid:text-white',
+                                        'group-selected:group-selection-start:group-hover:bg-[var(--accent-dimmed)]',
+                                        'group-selected:group-selection-start:group-invalid:border-[var(--destructive)]',
+                                        'group-selected:group-selection-start:group-invalid:bg-[var(--destructive)]',
+                                        'group-selected:group-selection-start:group-invalid:text-[var(--on-destructive)]',
 
                                         // selection end
-                                        'group-selected:group-selection-end:border',
-                                        'group-selected:group-selection-end:dark:border-0',
-                                        'group-selected:group-selection-end:border-accent',
-                                        'group-selected:group-selection-end:rounded-lg',
-                                        'group-selected:group-selection-end:bg-accent',
-                                        'group-selected:group-selection-end:text-white',
-                                        'group-selected:group-selection-end:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]',
-                                        'group-selected:group-selection-end:group-hover:bg-accent/90',
-                                        'group-selected:group-selection-end:dark:group-hover:bg-accent/90',
-                                        'group-selected:group-selection-end:group-invalid:border-destructive',
-                                        'group-selected:group-selection-end:group-invalid:bg-destructive',
-                                        'group-selected:group-selection-end:group-invalid:text-white',
+                                        'group-selected:group-selection-start:border',
+                                        'group-selected:group-selection-start:dark:border-0',
+                                        'group-selected:group-selection-start:border-[var(--accent)]',
+                                        'group-selected:group-selection-start:rounded-lg',
+                                        'group-selected:group-selection-start:bg-[var(--accent)]',
+                                        'group-selected:group-selection-start:text-[var(--on-accent)]',
+                                        'group-selected:group-selection-start:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]',
+                                        'group-selected:group-selection-start:group-hover:bg-[var(--accent-dimmed)]',
+                                        'group-selected:group-selection-start:group-invalid:border-[var(--destructive)]',
+                                        'group-selected:group-selection-start:group-invalid:bg-[var(--destructive)]',
+                                        'group-selected:group-selection-start:group-invalid:text-[var(--on-destructive)]',
 
                                         groupFocusVisibleOutlineStyle,
                                         'group-focus-visible:rounded-lg'
@@ -180,7 +182,7 @@ export function RangeCalendar<T extends DateValue>({errorMessage, ...props}: Ran
                 </CalendarGridBody>
             </CalendarGrid>
             {errorMessage && (
-                <Text slot="errorMessage" className="text-sm text-destructive">
+                <Text slot="errorMessage" className="text-sm text-[var(--destructive)]">
                     {errorMessage}
                 </Text>
             )}
@@ -209,13 +211,13 @@ export function DateRangePickerButton({className, children}: {className?: string
                                 </span>
                                 <span
                                     aria-hidden="true"
-                                    className="place-self-center text-muted group-disabled:opacity-50">
+                                    className="place-self-center text-[var(--on-surface-muted)] group-disabled:opacity-50">
                                     –
                                 </span>
                                 <span className="min-w-fit px-2.5 text-base/6 sm:text-sm/6">{formattedValue.end}</span>
                             </>
                         ) : (
-                            <span className="justify-self-start px-2.5 text-muted">{children}</span>
+                            <span className="justify-self-start px-2.5 text-[var(--on-surface-muted)]">{children}</span>
                         )}
 
                         <CalendarIcon className="place-self-center" />
@@ -225,7 +227,13 @@ export function DateRangePickerButton({className, children}: {className?: string
                 <DateInput slot="start" aria-hidden className="hidden" />
                 <DateInput slot="end" aria-hidden className="hidden" />
             </Group>
-            <Popover className={['max-w-none', 'dark:bg-zinc-800', 'dark:ring-zinc-700 '].join(' ')} placement="bottom">
+            <Popover
+                className={[
+                    'max-w-none rounded-xl border-2 border-[var(--border)]',
+                    'bg-[var(--surface)]',
+                    'ring-[var(--surface-muted)]',
+                ].join(' ')}
+                placement="bottom">
                 <Dialog className="overflow-auto p-3">
                     <RangeCalendar />
                 </Dialog>
