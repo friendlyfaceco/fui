@@ -29,6 +29,7 @@ export default {
                 //FUI
                 surface: 'var(--surface)',
                 surfaceDimmed: 'var(--surface-dimmed)',
+                surfaceMuted: 'var(--surface-muted)',
                 surfaceBright: 'var(--surface-bright)',
                 onSurface: 'var(--on-surface)',
                 onSurfaceMuted: 'var(--on-surface-muted)',

@@ -9,7 +9,7 @@ import {Form} from '../form';
 import {Label} from '../TextField/TextField';
 
 const meta = {
-    title: 'Example/DatePicker',
+    title: 'Component/DatePicker',
     component: DatePicker,
     parameters: {
         // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout

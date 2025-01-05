@@ -53,8 +53,7 @@ export function DateRangePickerInput() {
                     'group relative rounded-lg border bg-inherit shadow-sm',
                     'group-invalid:border-destructive',
                     '[&:has(_input[data-disabled=true])]:border-border/50',
-                    '[&:has([data-ui=date-segment][aria-readonly])]:bg-zinc-800/5',
-                    'dark:[&:has([data-ui=date-segment][aria-readonly])]:bg-white/10',
+                    '[&:has([data-ui=date-segment][aria-readonly])]:bg-[var(--surface-muted)]',
                     formattedValue ? 'min-w-60' : 'min-w-[278px]',
                     focusWithinRingStyle
                 )}>
@@ -63,10 +62,11 @@ export function DateRangePickerInput() {
                     className={[
                         'flex min-w-fit border-none shadow-none focus-within:ring-0',
                         '[&:has([data-ui=date-segment][aria-readonly])]:bg-transparent',
-                        'dark:[&:has([data-ui=date-segment][aria-readonly])]:bg-transparent',
                     ].join(' ')}
                 />
-                <span aria-hidden="true" className="place-self-center text-muted group-disabled:opacity-50">
+                <span
+                    aria-hidden="true"
+                    className="place-self-center text-[var(--on-surface-muted)] group-disabled:opacity-50">
                     –
                 </span>
                 <DateInput
@@ -74,7 +74,6 @@ export function DateRangePickerInput() {
                     className={[
                         'flex min-w-fit flex-1 border-none opacity-100 shadow-none focus-within:ring-0',
                         '[&:has([data-ui=date-segment][aria-readonly])]:bg-transparent',
-                        'dark:[&:has([data-ui=date-segment][aria-readonly])]:bg-transparent',
                     ].join(' ')}
                 />
                 <Button
@@ -85,7 +84,9 @@ export function DateRangePickerInput() {
                     <CalendarIcon />
                 </Button>
             </Group>
-            <Popover className={['max-w-none', 'dark:bg-zinc-800', 'dark:ring-zinc-700'].join(' ')} placement="bottom">
+            <Popover
+                className={['max-w-none', ' bg-[var(--surface)]', ' bg-[var(--surface-muted)]'].join(' ')}
+                placement="bottom">
                 <Dialog className="overflow-auto p-3">
                     <RangeCalendar />
                 </Dialog>
@@ -99,7 +100,7 @@ export type RangeCalendarProps<T extends DateValue> = {
 
 export function RangeCalendar<T extends DateValue>({errorMessage, ...props}: RangeCalendarProps<T>) {
     return (
-        <RACRangeCalendar className="bg-white" {...props}>
+        <RACRangeCalendar className="bg-[var(--surface)]" {...props}>
             <CalendarHeader />
             <CalendarGrid className="[&_td]:px-0" weekdayStyle="short">
                 <CalendarGridHeader />
@@ -108,15 +109,16 @@ export function RangeCalendar<T extends DateValue>({errorMessage, ...props}: Ran
                         <CalendarCell
                             date={date}
                             className={[
-                                'group size-9 cursor-default text-sm outline-none',
-                                'selected:bg-zinc-100 dark:selected:bg-zinc-700',
-                                'invalid:selected:bg-destructive/15 dark:invalid:selected:bg-destructive/30',
+                                'group size-9 cursor-default text-sm outline-none text-[var(--on-surface-dimmed)]',
+                                'selected:bg-[var(--accent)]',
+                                'invalid:selected:bg-[var(--destructive-dimmed)] dark:invalid:selected:bg-[var(--destructive)]',
                                 'selection-start:rounded-s-lg',
                                 'selection-end:rounded-e-lg',
                                 '[td:first-child_&]:rounded-s-lg [td:last-child_&]:rounded-e-lg',
                             ].join(' ')}>
                             {({formattedDate}) => (
                                 <span
+                                    //START HERE
                                     className={twMerge(
                                         'flex size-[calc(theme(size.9)-1px)] items-center justify-center',
                                         'group-hover:rounded-lg',

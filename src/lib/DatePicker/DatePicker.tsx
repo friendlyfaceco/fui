@@ -51,7 +51,7 @@ export function Calendar<T extends DateValue>({errorMessage, ...props}: Calendar
                         <CalendarCell
                             date={date}
                             className={twMerge(
-                                'flex size-9 cursor-default items-center justify-center rounded-lg text-sm outline-none text-[var(--accent)]',
+                                'flex size-9 cursor-default items-center justify-center rounded-lg text-sm outline-none text-[var(--on-surface-dimmed)]',
                                 'hover:bg-[var(--surface-dimmed)]',
                                 'pressed:bg-[var(--primary-dimmed)] pressed:text-[var(--on-accent)]',
                                 'disabled:opacity-50',
@@ -133,6 +133,7 @@ export function DatePickerInput(props: DateInputProps) {
                     'grid w-auto min-w-52',
                     'grid-cols-[1fr_calc(theme(size.5)+20px)]',
                     'sm:grid-cols-[1fr_calc(theme(size.4)+20px)]',
+                    '[&:has([data-ui=date-segment][aria-readonly])]:bg-[var(--surface-muted)]',
                 ].join(' ')}>
                 <DateInput
                     {...props}
@@ -141,6 +142,7 @@ export function DatePickerInput(props: DateInputProps) {
                         'row-start-1',
                         'sm:pe-9',
                         'pe-10',
+                        '[&:has([data-ui=date-segment][aria-readonly])]:bg-transparent',
                     ])}
                 />
                 <Button

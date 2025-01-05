@@ -95,6 +95,7 @@
 
         /* surface */
         --surface: var(--background-100);
+        --surface-muted: var(--background-300);
         --surface-dimmed: var(--background-400);
         --surface-bright: var(--background-0);
         --on-surface: var(--foreground-900);
@@ -181,7 +182,8 @@
 
         /* surface */
         --surface: var(--background-900);
-        --surface-dimmed: var(--background-800);
+        --surface-muted: var(--background-800);
+        --surface-dimmed: var(--background-700);
         --surface-bright: var(--background-1000);
         --on-surface: var(--foreground-100);
         --on-surface-muted: var(--foreground-700);
