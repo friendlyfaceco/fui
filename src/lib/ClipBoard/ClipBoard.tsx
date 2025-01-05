@@ -8,6 +8,10 @@ import {CheckIcon, CopyIcon} from '../icons';
 import {Tooltip, TooltipTrigger} from '../Tooltip/Tooltip';
 import type {ButtonWithoutAsChildProps} from '../Button/Button';
 
+//This exports 2 components:
+//<CopyButton/> Pre-made clipboard button
+//<ClipBoard/> Build your own clipboard  UI
+
 export type Props = {
     /** Set initial value */
     initialValue?: number;

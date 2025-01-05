@@ -6,7 +6,7 @@ import {TextField} from '../TextField/TextField';
 import {Button} from '../Button';
 
 const meta = {
-    title: 'Example/ClipBoard',
+    title: 'Component/ClipBoard',
     component: ClipBoard,
     parameters: {
         // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
