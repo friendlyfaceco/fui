@@ -5,6 +5,11 @@ import {useImageLoadingStatus} from '@/hooks/use-image-loading-status';
 
 import {AccessibleIcon} from '../accessible-icon';
 
+// Exported from this file:
+//<Avatar/>
+//<AvatarBadge/>
+//<AvatarGroup/>
+
 export type Props = {
     /** Set initial value */
     initialValue?: number;
@@ -39,7 +44,13 @@ export function Avatar({colorless = false, className, children, src, alt}: Avata
                 ])}
                 aria-labelledby={ariaLabelledby}>
                 {status === 'loaded' ? (
-                    <img aria-hidden id={avatarId} src={src} alt={alt} className="object-cover" />
+                    <img
+                        aria-hidden
+                        id={avatarId}
+                        src={src}
+                        alt={alt}
+                        className={twMerge(['object-cover', colorless && 'grayscale'])}
+                    />
                 ) : (
                     <InitialAvatar alt={alt} id={avatarId} colorless={colorless} />
                 )}
@@ -114,7 +125,7 @@ function InitialAvatar({alt, id, colorless}: {alt: string; id: string; colorless
             }}
             fill="currentColor"
             viewBox="0 0 24 24"
-            className="font-medium text-black dark:text-white">
+            className="font-medium text-[var(--on-surface)] ">
             <text
                 x="50%"
                 y="50%"

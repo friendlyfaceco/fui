@@ -45,6 +45,24 @@ RoundedAvatars.parameters = {
     },
 };
 
+export const ColorlessAvatars = () => {
+    return (
+        <div className="flex gap-6">
+            <Avatar
+                colorless={true}
+                alt="M A"
+                src="https://images.unsplash.com/photo-1601412436009-d964bd02edbc?q=80&auto=format&fit=facearea&facepad=3&w=256&h=256"
+            />
+            <Avatar
+                className="rounded-full"
+                colorless={true}
+                alt="M A"
+                src="https://images.unsplash.com/photo-1601412436009-d964bd02edbc?q=80&auto=format&fit=facearea&facepad=3&w=256&h=256"
+            />
+        </div>
+    );
+};
+
 export const AvatarSizes = () => {
     return (
         <div className="flex items-end gap-6">
