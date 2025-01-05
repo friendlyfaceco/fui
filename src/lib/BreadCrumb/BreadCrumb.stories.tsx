@@ -15,7 +15,7 @@ export default meta;
 
 export const BasicExample = () => {
     return (
-        <Breadcrumbs className="dark:text-white">
+        <Breadcrumbs>
             <BreadCrumb href="/">Home</BreadCrumb>
             <BreadCrumb href="/react-aria">React Aria</BreadCrumb>
             <BreadCrumb>Breadcrumbs</BreadCrumb>

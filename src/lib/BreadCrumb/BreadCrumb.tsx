@@ -9,14 +9,14 @@ import {twMerge} from 'tailwind-merge';
 import {composeTailwindRenderProps} from '../utils';
 import {ChevronRightIcon} from '../icons';
 import {Link} from '../Link';
-// import {Link} from '../link';
+
 export type Props = {
     /** Set initial value */
     initialValue?: number;
 };
 
 export function Breadcrumbs<T extends object>({className, ...props}: RACBreadcrumbsProps<T>) {
-    return <RACBreadcrumbs {...props} className={twMerge('flex gap-1', className)} />;
+    return <RACBreadcrumbs {...props} className={twMerge('flex gap-1 text-[var(--on-surface)]', className)} />;
 }
 type BreadcrumbProps = RACBreadcrumbProps & LinkProps;
 
@@ -26,13 +26,13 @@ export function BreadCrumb({className, ...props}: BreadcrumbProps) {
             {...props}
             className={composeTailwindRenderProps(
                 className as RACBreadcrumbProps['className'],
-                'flex items-center gap-1'
+                'flex items-center gap-1 '
             )}>
             <Link
                 {...props}
                 className="underline underline-offset-2 disabled:opacity-100 [&:not(:hover)]:decoration-muted"
             />
-            {props.href && <ChevronRightIcon className="size-4 text-muted" strokeWidth={1.5} />}
+            {props.href && <ChevronRightIcon className="size-4 text-[var(--on-surface-muted)]" strokeWidth={1.5} />}
         </RACBreadcrumb>
     );
 }
