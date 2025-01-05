@@ -4,7 +4,7 @@ import {Avatar, AvatarBadge, AvatarGroup} from './Avatar';
 import {DoNotDisturb, Available, Busy, Away, Verified} from '../icons';
 
 const meta = {
-    title: 'Example/Avatar',
+    title: 'Component/Avatar',
     component: Avatar,
     parameters: {
         // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout

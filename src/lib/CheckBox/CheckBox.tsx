@@ -11,36 +11,16 @@ import {composeTailwindRenderProps, groupBoxStyle, groupFocusVisibleOutlineStyle
 import {DescriptionContext, DescriptionProvider} from '../TextField/TextField';
 import {CheckIcon, MinusIcon} from '../icons';
 
-export type Props = {
-    /** Set initial value */
-    initialValue?: number;
-};
+//This file export the following components:
+//<CheckBox/>
+//<Checkboxes/>
+//<CheckboxField/>
+//CheckboxGroup/>
 
 export type CheckboxGroupProps = {
     children?: ReactNode;
     orientation?: 'vertical' | 'horizontal';
 } & Omit<RACCheckboxGroupProps, 'children'>;
-// export const CheckBox: FC<Props> = ({initialValue = 0}) => {
-//     const {count, incrementCount} = useLogic(initialValue);
-
-//     useEffect(() => {
-//         const runner = throttle(() => {
-//             console.log('throttle');
-//         }, 10);
-//         runner();
-//     }, []);
-//     return (
-//         <div className={classes.checkBox}>
-//             <h2 className={classes.header}>Counter</h2>
-//             <button className={classes.button} type="button" onClick={incrementCount}>
-//                 Increment by one
-//             </button>
-//             <div>
-//                 Total value: <strong>{count}</strong>
-//             </div>
-//         </div>
-//     );
-// };
 
 export function CheckboxGroup({orientation = 'vertical', ...props}: CheckboxGroupProps) {
     return (
@@ -128,7 +108,7 @@ export function CheckBox({className, ...props}: CheckboxProps | CustomRenderChec
                 'data-[position=left]:justify-between',
                 'text-base/6 sm:text-sm/6',
                 'disabled:opacity-50',
-                'dark:text-white',
+                'text-[var(--on-surface)]',
             ])}>
             {renderProps => {
                 return (
@@ -139,36 +119,33 @@ export function CheckBox({className, ...props}: CheckboxProps | CustomRenderChec
                                 labelPosition === 'right' ? 'me-3' : 'ms-3',
                                 'size-[1.125rem] sm:size-4',
                                 'border dark:border-[1.5px]',
-                                'border-zinc-400/75 dark:border-zinc-600',
+                                'border-[var(--on-surface-muted)]',
 
                                 // readonly
                                 'group-data-[readonly]:opacity-50',
 
                                 // invalid
-                                'group-invalid:border-destructive',
-                                'group-invalid:dark:border-destructive',
+                                'group-invalid:border-[var(--destructive)]',
 
                                 // selected
                                 'group-selected:border',
-                                'group-selected:border-accent',
-                                'group-selected:bg-accent',
+                                'group-selected:border-[var(--accent)]',
+                                'group-selected:bg-[var(--accent)]',
                                 'group-selected:dark:border-0',
-                                'group-selected:dark:border-accent',
                                 'group-selected:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]',
 
                                 // indeterminate
                                 'group-indeterminate:border',
-                                'group-indeterminate:border-accent',
-                                'group-indeterminate:bg-accent',
+                                'group-indeterminate:border-[var(--accent)]',
+                                'group-indeterminate:bg-[var(--accent)]',
                                 'group-indeterminate:dark:border-0',
-                                'group-indeterminate:dark:border-accent',
                                 'group-indeterminate:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]',
                                 groupFocusVisibleOutlineStyle,
                             ])}>
                             {renderProps.isIndeterminate ? (
-                                <MinusIcon className="size-4 text-white sm:size-3.5" />
+                                <MinusIcon className="size-4 text-[var(--on-accent)] sm:size-3.5" />
                             ) : renderProps.isSelected ? (
-                                <CheckIcon className="size-4 text-white sm:size-3.5" />
+                                <CheckIcon className="size-4 text-[var(--on-accent)] sm:size-3.5" />
                             ) : null}
                         </div>
 
