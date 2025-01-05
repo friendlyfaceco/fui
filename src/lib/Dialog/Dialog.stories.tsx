@@ -4,7 +4,7 @@ import {DialogTrigger, FieldError, Heading, Input, Label, Menu, MenuTrigger} fro
 import React from 'react';
 
 import {Button} from '../Button';
-import {Modal, DialogHeader, DialogBody, DialogCloseButton, DialogFooter, DialogTitle} from '../AlertDialog';
+import {Modal, DialogHeader, DialogBody, DialogCloseButton, DialogFooter, DialogTitle} from './Dialog';
 import {Text} from '../Text/Text';
 import {Form} from '../form';
 import {TextField} from '../TextField/TextField';
@@ -15,7 +15,7 @@ import './Dialog.module.css';
 import {MenuItem} from '../Menu';
 
 const meta = {
-    title: 'Patterns/DialogPatterns',
+    title: 'Component/Dialog',
     component: Dialog,
     parameters: {
         // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
@@ -25,7 +25,86 @@ const meta = {
 
 export default meta;
 
-export const BasicExample = () => {
+export const Basic = () => {
+    return (
+        <>
+            <Dialog alert>
+                <DialogHeader>Dialog Header</DialogHeader>
+                <DialogBody>
+                    Dialog Body: Are you sure? This application will no longer be accessible and any existing sessions
+                    will be expired.
+                </DialogBody>
+                <DialogFooter>
+                    <DialogCloseButton>Cancel</DialogCloseButton>
+                    <Button> Cancel</Button>
+                    <Button color="destructive"> Revoke access</Button>
+                </DialogFooter>
+            </Dialog>
+        </>
+    );
+};
+
+export const AlertExample1 = () => {
+    const [isOpen, setIsOpen] = React.useState(false);
+    //This example uses onPress
+
+    return (
+        <>
+            <Button color="destructive" onPress={() => setIsOpen(true)}>
+                Revoke access
+            </Button>
+            <Modal isOpen={isOpen} onOpenChange={setIsOpen}>
+                <Dialog alert>
+                    <DialogHeader>Revoke access</DialogHeader>
+                    <DialogBody>
+                        Are you sure? This application will no longer be accessible and any existing sessions will be
+                        expired.
+                    </DialogBody>
+                    <DialogFooter>
+                        <DialogCloseButton>Cancel</DialogCloseButton>
+                        <Button color="destructive" onPress={() => setIsOpen(false)}>
+                            Revoke access
+                        </Button>
+                    </DialogFooter>
+                </Dialog>
+            </Modal>
+        </>
+    );
+};
+
+AlertExample1.parameters = {
+    docs: {
+        description: {
+            story: 'Alert dialogs are interruptive, so they\'re best for displaying important information that users need to acknowledge before moving forward with a task or workflow. Use them only when absolutely necessary. Use <a href="./?path=/docs/dialog--docs" target="_blank">`Dialog`</a> for low-signal notifications or excessive confirmations.',
+        },
+    },
+};
+
+export const AlertExample2 = () => {
+    return (
+        <DialogTrigger>
+            <Button>About</Button>
+            <Modal>
+                <Dialog>
+                    <DialogHeader>About</DialogHeader>
+                    <DialogBody>Copyright © 2023 Adobe. All rights reserved.</DialogBody>
+                    <DialogFooter>
+                        <DialogCloseButton>OK</DialogCloseButton>
+                    </DialogFooter>
+                </Dialog>
+            </Modal>
+        </DialogTrigger>
+    );
+};
+AlertExample2.parameters = {
+    docs: {
+        description: {
+            story: 'Alert dialogs are interruptive, so they\'re best for displaying important information that users need to acknowledge before moving forward with a task or workflow. Use them only when absolutely necessary. Use <a href="./?path=/docs/dialog--docs" target="_blank">`Dialog`</a> for low-signal notifications or excessive confirmations.',
+        },
+    },
+};
+
+export const FormExample = () => {
     return (
         <DialogTrigger>
             <Button>Edit profile</Button>
@@ -478,6 +557,40 @@ WithControlledOpenState.parameters = {
     docs: {
         description: {
             story: 'Use the `isOpen` and `onOpenChange`  prop of the `Modal` component to control dialog open state.',
+        },
+    },
+};
+
+export const WithControlledOpenState2 = () => {
+    const [isOpen, setIsOpen] = React.useState(false);
+    //This example uses onPress
+
+    return (
+        <>
+            <Button color="destructive" onPress={() => setIsOpen(true)}>
+                Open on click
+            </Button>
+            <Modal isOpen={isOpen} onOpenChange={setIsOpen}>
+                <Dialog>
+                    <DialogHeader>Opened on click</DialogHeader>
+                    <DialogBody>
+                        This modal was controled with onPress, but can be controlled programatically too
+                    </DialogBody>
+                    <DialogFooter>
+                        <Button color="destructive" onPress={() => setIsOpen(false)}>
+                            CTA
+                        </Button>
+                    </DialogFooter>
+                </Dialog>
+            </Modal>
+        </>
+    );
+};
+
+WithControlledOpenState2.parameters = {
+    docs: {
+        description: {
+            story: 'This modal was controled with onPress, but can be controlled programatically too',
         },
     },
 };

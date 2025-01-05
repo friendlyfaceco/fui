@@ -1,5 +1,4 @@
 export {Button} from './Button';
-//export {AlertDialog} from './AlertDialog';
 export {Avatar} from './Avatar';
 export {CheckBox} from './CheckBox';
 export {ClipBoard} from './ClipBoard';
@@ -8,6 +7,7 @@ export {Command} from './Command';
 export {DateField} from './DateField';
 export {DatePicker} from './DatePicker';
 export {DateRangePicker} from './DateRangePicker';
+export {Dialog} from './Dialog';
 export {Disclosure} from './Disclosure';
 export {Dropzone} from './Dropzone';
 export {EmptyState} from './EmptyState';

@@ -5,7 +5,7 @@ import {DialogTrigger} from 'react-aria-components';
 import {Dialog, DialogBody, DialogCloseButton, DialogFooter, DialogHeader, Modal} from './AlertDialog';
 import {Button} from '../Button';
 const meta = {
-    title: 'Component/Dialog',
+    title: 'Component/DialogREMOVE',
     component: Dialog,
     parameters: {
         // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
