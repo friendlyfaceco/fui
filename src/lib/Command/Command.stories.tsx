@@ -16,7 +16,7 @@ import {
 import {AccessibleIcon} from '../accessible-icon';
 import {Text} from '../Text/Text';
 const meta = {
-    title: 'Example/Command',
+    title: 'Pattern/Command',
     component: Command,
     parameters: {
         // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
