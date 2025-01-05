@@ -6,7 +6,7 @@ import {DateField, DateInput} from './DateField';
 import {Description, FieldError, Label} from '../TextField/TextField';
 
 const meta = {
-    title: 'Example/DateField',
+    title: 'Component/DateField',
     component: DateField,
     parameters: {
         layout: 'centered',

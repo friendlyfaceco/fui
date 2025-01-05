@@ -13,6 +13,10 @@ import {twMerge} from 'tailwind-merge';
 
 import {composeTailwindRenderProps, focusWithinRingStyle, inputFieldStyle} from '../utils';
 
+//This file exports:
+// DateField
+// DateInput
+
 export type DateFieldProps<T extends DateValue> = {} & RACDateFieldProps<T>;
 
 export function DateField<T extends DateValue>(props: DateFieldProps<T>) {
@@ -35,17 +39,18 @@ export function DateInput(props: DateInputProps) {
             data-ui="control"
             className={composeTailwindRenderProps(props.className, [
                 'group flex w-full items-center rounded-lg border bg-transparent shadow-sm',
-                'invalid:border-destructive',
+                'invalid:border-[var(--destructive)]',
                 '[&:has([data-disabled=true])]:opacity-50',
-                '[&:has([data-ui=date-segment][aria-readonly])]:bg-zinc-800/5',
-                'dark:[&:has([data-ui=date-segment][aria-readonly])]:bg-white/10',
+                // '[&:has([data-ui=date-segment][aria-readonly])]:bg-zinc-800/5',
+                // 'dark:[&:has([data-ui=date-segment][aria-readonly])]:bg-white/10',
+                '[&:has([data-ui=date-segment][aria-readonly])]:bg-[var(--surface-dimmed)]',
                 'block min-w-[150px]',
                 'text-base/6 sm:text-sm/6',
                 'px-2.5',
                 'py-[calc(theme(spacing[2.5])-1px)] sm:py-[calc(theme(spacing[1.5])-1px)]',
                 focusWithinRingStyle,
                 'ring-offset-0',
-                'dark:text-white',
+                'text-[var(--on-surface)]',
             ])}>
             {segment => (
                 <DateSegment
@@ -53,8 +58,8 @@ export function DateInput(props: DateInputProps) {
                     segment={segment}
                     className={twMerge(
                         'inline rounded px-0.5 caret-transparent outline-0 type-literal:px-0',
-                        'data-[placeholder]:italic data-[placeholder]:text-muted',
-                        'focus:bg-accent focus:text-white focus:data-[placeholder]:text-white'
+                        'data-[placeholder]:italic data-[placeholder]:text-[var(--on-surface-muted)]',
+                        'focus:bg-[var(--accent-dimmed)] focus:text-[var(--surface)] focus:data-[placeholder]:text-[var(--surface-dimmed)]'
                     )}
                 />
             )}
