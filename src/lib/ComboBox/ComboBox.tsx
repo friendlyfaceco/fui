@@ -17,6 +17,20 @@ import {
     SelectSection,
 } from '../Select';
 
+//This file exports the following components:
+//     ComboBox,
+//     ComboBoxGroup,
+//     ComboBoxButton,
+//     ComboBoxClearButton,
+// And the following are Alias of Select
+//     ComboBoxInput,
+//     ComboBoxListBox,
+//     ComboBoxListItem,
+//     ComboBoxListItemDescription,
+//     ComboBoxListItemLabel,
+//     ComboBoxPopover,
+//     ComboBoxSection,
+
 export type Props = {
     /** Set initial value */
     initialValue?: number;
@@ -50,7 +64,7 @@ export function ComboBoxGroup(props: GroupProps) {
                 '[&>[data-ui=icon]:has(+input)]:row-start-1',
                 '[&>[data-ui=icon]:has(+input)]:col-start-1',
                 '[&>[data-ui=icon]:has(+input)]:place-self-center',
-                '[&>[data-ui=icon]:has(+input)]:text-muted',
+                '[&>[data-ui=icon]:has(+input)]:text-[var(--on-surface-muted)]',
                 '[&>[data-ui=icon]:has(+input)]:z-10',
 
                 // Input
@@ -86,7 +100,7 @@ export const ComboBoxInput = Input;
 export function ComboBoxButton() {
     return (
         <Button isIconOnly size="sm" data-ui="trigger" variant="plain">
-            <ChevronDownIcon className="text-muted group-hover:text-foreground" />
+            <ChevronDownIcon className="text-[var(--on-surface-muted)] group-hover:text-[var(--on-surface)]" />
         </Button>
     );
 }
@@ -109,7 +123,7 @@ export function ComboBoxClearButton({onPress}: {onPress?: ButtonWithoutAsChildPr
                 state?.setSelectedKey(null);
                 onPress?.(e);
             }}>
-            <XIcon aria-label="Clear" className="text-muted" />
+            <XIcon aria-label="Clear" className="text-[var(--on-surface-muted)]" />
         </Button>
     );
 }
@@ -127,7 +141,7 @@ export function CommandButton() {
 
             <Keyboard
                 data-ui="trigger"
-                className="me-1 hidden dark:text-white rounded-lg p-1 text-xs peer-data-[focused=true]:flex ltr:ms-1">
+                className="me-1 hidden text-[var(--on-surface)] rounded-lg p-1 text-xs peer-data-[focused=true]:flex ltr:ms-1">
                 ESC
             </Keyboard>
         </>

@@ -6,9 +6,9 @@ import {Button} from '../Button';
 import {Form} from '../form';
 import {
     ComboBox,
+    ComboBoxGroup,
     ComboBoxButton,
     ComboBoxClearButton,
-    ComboBoxGroup,
     ComboBoxInput,
     ComboBoxListBox,
     ComboBoxListItem,
@@ -23,7 +23,7 @@ import {AccessibleIcon} from '../accessible-icon';
 import {Avatar} from '../Avatar';
 import {users} from '../user';
 const meta = {
-    title: 'Example/ComboBox',
+    title: 'Component/ComboBox',
     component: ComboBox,
     parameters: {
         // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout

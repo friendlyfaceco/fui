@@ -8,7 +8,7 @@ import {CheckBox, Checkboxes, CheckboxField, CheckboxGroup} from './CheckBox';
 import {Description, FieldError, Label, LabeledGroup} from '../TextField/TextField';
 
 const meta = {
-    title: 'Example/CheckBox',
+    title: 'Component/CheckBox',
     component: CheckBox,
     parameters: {
         // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
