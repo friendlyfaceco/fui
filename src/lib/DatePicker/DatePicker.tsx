@@ -28,6 +28,11 @@ import {DateInput} from '../DateField/DateField';
 import {Button} from '../Button';
 import {Text} from '../Text/Text';
 
+//This file exports the following components:
+// - DatePicker
+// - DatePickerButton
+// - DatePickerInput
+
 export type DatePickerProps<T extends DateValue> = {} & RACDatePickerProps<T>;
 export function DatePicker<T extends DateValue>(props: DatePickerProps<T>) {
     return <RACDatePicker {...props} className={composeTailwindRenderProps(props.className, inputFieldStyle)} />;
@@ -37,7 +42,7 @@ export type CalendarProps<T extends DateValue> = {
 } & Omit<RACCalendarProps<T>, 'visibleDuration'>;
 export function Calendar<T extends DateValue>({errorMessage, ...props}: CalendarProps<T>) {
     return (
-        <RACCalendar className="bg-white" {...props}>
+        <RACCalendar className="bg-[var(--surface)]" {...props}>
             <CalendarHeader />
             <CalendarGrid weekdayStyle="short">
                 <CalendarGridHeader />
@@ -46,15 +51,15 @@ export function Calendar<T extends DateValue>({errorMessage, ...props}: Calendar
                         <CalendarCell
                             date={date}
                             className={twMerge(
-                                'flex size-9 cursor-default items-center justify-center rounded-lg text-sm outline-none',
-                                'hover:bg-zinc-100 dark:hover:bg-zinc-700',
-                                'pressed:bg-accent/90 pressed:text-white',
+                                'flex size-9 cursor-default items-center justify-center rounded-lg text-sm outline-none text-[var(--accent)]',
+                                'hover:bg-[var(--surface-dimmed)]',
+                                'pressed:bg-[var(--primary-dimmed)] pressed:text-[var(--on-accent)]',
                                 'disabled:opacity-50',
                                 'selected:border selected:border-accent selected:dark:border-0',
-                                'selected:bg-accent selected:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]',
-                                'selected:text-white',
-                                'selected:invalid:border-destructive selected:invalid:bg-destructive selected:invalid:text-white',
-                                'unavailable:text-destructive unavailable:line-through unavailable:decoration-destructive',
+                                'selected:bg-[var(--accent)] selected:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]',
+                                'selected:text-[var(--on-accent)]',
+                                'selected:invalid:border-[var(--destructive)] selected:invalid:bg-[var(--destructive)] selected:invalid:text-[var(--on-destructive)]',
+                                'unavailable:text-[var(--destructive)] unavailable:line-through unavailable:decoration-[var(--destructive)]',
                                 focusVisibleOutlineStyle
                             )}
                         />
@@ -62,7 +67,7 @@ export function Calendar<T extends DateValue>({errorMessage, ...props}: Calendar
                 </CalendarGridBody>
             </CalendarGrid>
             {errorMessage && (
-                <Text slot="errorMessage" className="text-sm text-destructive">
+                <Text slot="errorMessage" className="text-sm text-[var(--destructive)]">
                     {errorMessage}
                 </Text>
             )}
@@ -74,7 +79,7 @@ export function CalendarHeader() {
     const {direction} = useLocale();
 
     return (
-        <header className="flex w-full items-center gap-1">
+        <header className="flex w-full items-center gap-1 text-[var(--accent-dimmed)]">
             <Button
                 slot="previous"
                 variant="plain"
@@ -82,9 +87,9 @@ export function CalendarHeader() {
                 aria-label="Previous"
                 className="focus-visible:-outline-offset-2">
                 {direction === 'rtl' ? (
-                    <ChevronRightIcon className="text-muted sm:size-5" />
+                    <ChevronRightIcon className="text-[var(--on-surface-muted)] sm:size-5" />
                 ) : (
-                    <ChevronLeftIcon className="text-muted sm:size-5" />
+                    <ChevronLeftIcon className="text-[var(--on-surface-muted)] sm:size-5" />
                 )}
             </Button>
 
@@ -97,9 +102,9 @@ export function CalendarHeader() {
                 aria-label="Next"
                 className="focus-visible:-outline-offset-2">
                 {direction === 'rtl' ? (
-                    <ChevronLeftIcon className="text-muted sm:size-5" />
+                    <ChevronLeftIcon className="text-[var(--on-surface-muted)] sm:size-5" />
                 ) : (
-                    <ChevronRightIcon className="text-muted sm:size-5" />
+                    <ChevronRightIcon className="text-[var(--on-surface-muted)] sm:size-5" />
                 )}
             </Button>
         </header>
@@ -109,7 +114,11 @@ export function CalendarHeader() {
 export function CalendarGridHeader() {
     return (
         <RACCalendarGridHeader>
-            {day => <CalendarHeaderCell className="size-9 text-sm/6 font-normal text-muted">{day}</CalendarHeaderCell>}
+            {day => (
+                <CalendarHeaderCell className="size-9 text-sm/6 font-normal text-[var(--on-surface-muted)]">
+                    {day}
+                </CalendarHeaderCell>
+            )}
         </RACCalendarGridHeader>
     );
 }
@@ -149,7 +158,14 @@ export function DatePickerInput(props: DateInputProps) {
                 </Button>
             </Group>
 
-            <Popover className={['max-w-none', 'dark:bg-zinc-800', 'dark:ring-zinc-700'].join(' ')} placement="bottom">
+            <Popover
+                className={[
+                    'max-w-none rounded-xl border-2 border-[var(--border)]',
+                    'bg-[var(--surface)]',
+                    'border-success',
+                    'ring-[var(--surface-muted)]',
+                ].join(' ')}
+                placement="bottom">
                 <Dialog className="overflow-auto p-3">
                     <Calendar />
                 </Dialog>
@@ -170,7 +186,7 @@ export function DatePickerButton({className, children}: {className?: string; chi
                     className={twMerge('text w-full min-w-52 flex-1 justify-between px-2.5 font-normal', className)}
                     variant="outline">
                     {formattedDate === '' ? (
-                        <span className="text-muted">{children}</span>
+                        <span className="text-[var(--on-surface-muted)]">{children}</span>
                     ) : (
                         <span className="text-sm">{formattedDate}</span>
                     )}
@@ -181,7 +197,14 @@ export function DatePickerButton({className, children}: {className?: string; chi
                 <DateInput className="hidden" aria-hidden />
             </Group>
 
-            <Popover className={['max-w-none', 'dark:bg-zinc-800', 'dark:ring-zinc-700'].join(' ')} placement="bottom">
+            <Popover
+                className={[
+                    'max-w-none rounded-xl border-2 border-[var(--border)]',
+                    'bg-[var(--surface)]',
+                    'border-success',
+                    'ring-[var(--surface-muted)]',
+                ].join(' ')}
+                placement="bottom">
                 <Dialog className="overflow-auto p-3">
                     <Calendar />
                 </Dialog>
