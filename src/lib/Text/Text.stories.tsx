@@ -3,7 +3,7 @@ import type {Meta} from '@storybook/react';
 import {Strong, Text, TextLink} from './Text';
 
 const meta = {
-    title: 'Example/Text',
+    title: 'Component/Text',
     component: Text,
     parameters: {
         // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
@@ -32,10 +32,11 @@ export const ElementTypes = () => {
     return (
         <Text elementType="div">
             <Strong>TailwindCSS</Strong> is a utility-first CSS framework packed with classes like{' '}
-            <Strong className="text-sky-500">flex</Strong>, <Strong className="text-sky-500">pt-4</Strong>,{' '}
+            <Strong className="text-[var(--success)]">flex</Strong>,{' '}
+            <Strong className="text-[var(--warning)]">pt-4</Strong>,{' '}
             <Strong className="text-sky-500">text-center</Strong> and{' '}
-            <Strong className="text-sky-500">rotate-90</Strong> that can be composed to build any design, directly in
-            your markup.
+            <Strong className="text-[var(--destructive)]">rotate-90</Strong> that can be composed to build any design,
+            directly in your markup.
         </Text>
     );
 };

@@ -10,14 +10,16 @@ export function Text({className, elementType, children, ...props}: TextProps) {
         elementType ?? 'p',
         {
             ...props,
-            className: twMerge('text-pretty text-base/6 text-muted sm:text-sm/6', className),
+            className: twMerge('text-pretty text-base/6 text-[var(--on-surface-muted)] sm:text-sm/6', className),
         },
         children
     );
 }
 
 export function Strong({className, ...props}: JSX.IntrinsicElements['strong']) {
-    return <Text {...props} elementType="strong" className={twMerge('font-medium text-foreground', className)} />;
+    return (
+        <Text {...props} elementType="strong" className={twMerge('font-medium text-[var(--on-surface)]', className)} />
+    );
 }
 
 export function Small({className, ...props}: JSX.IntrinsicElements['small']) {
