@@ -5,7 +5,7 @@ import {Form} from '../form';
 import {Description, FieldError, Input, Label, TextField} from './TextField';
 
 const meta = {
-    title: 'Example/TextField',
+    title: 'Component/TextField',
     component: TextField,
     parameters: {
         // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout

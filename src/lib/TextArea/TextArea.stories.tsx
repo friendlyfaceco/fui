@@ -5,7 +5,7 @@ import {Button} from '../Button';
 import {Description, FieldError, Label, TextArea, TextField} from '../TextField/TextField';
 
 const meta = {
-    title: 'Example/TextArea',
+    title: 'Component/TextArea',
     component: TextArea,
     parameters: {
         // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
@@ -28,9 +28,7 @@ export const WithDescription = () => {
     return (
         <TextField>
             <Label>Bio</Label>
-            <Description>
-                You can <span className="text-foreground">@mention</span> other users and organizations to link to them.
-            </Description>
+            <Description>This text area can handle longer texts like your story.</Description>
             <TextArea placeholder="Tell us a little bit about yourself" />
         </TextField>
     );
@@ -41,9 +39,7 @@ export const WithDescriptionHidden = () => {
         <TextField>
             <Label>Bio</Label>
             <TextArea placeholder="Tell us a little bit about yourself" />
-            <Description>
-                You can <span className="text-foreground">@mention</span> other users and organizations to link to them.
-            </Description>
+            <Description>This text area can handle longer texts like your story.</Description>
         </TextField>
     );
 };
@@ -52,9 +48,7 @@ export const WithDisabled = () => {
     return (
         <TextField isDisabled>
             <Label>Bio</Label>
-            <Description>
-                You can <span className="text-foreground">@mention</span> other users and organizations to link to them.
-            </Description>
+            <Description>This text area can handle longer texts like your story.</Description>
             <TextArea placeholder="Tell us a little bit about yourself" />
         </TextField>
     );
@@ -64,9 +58,7 @@ export const WithReadonly = () => {
     return (
         <TextField isReadOnly>
             <Label>Bio</Label>
-            <Description>
-                You can <span className="text-foreground">@mention</span> other users and organizations to link to them.
-            </Description>
+            <Description>This text area can handle longer texts like your story.</Description>
             <TextArea placeholder="Tell us a little bit about yourself" />
         </TextField>
     );
@@ -77,10 +69,7 @@ export const WithErrorMessage = () => {
         <Form>
             <TextField isRequired>
                 <Label>Bio</Label>
-                <Description>
-                    You can <span className="text-foreground">@mention</span> other users and organizations to link to
-                    them.
-                </Description>
+                <Description>This text area can handle longer texts like your story.</Description>
                 <TextArea placeholder="Tell us a little bit about yourself" />
                 <FieldError />
             </TextField>
