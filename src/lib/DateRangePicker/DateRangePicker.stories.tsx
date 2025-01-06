@@ -8,7 +8,7 @@ import {Form} from '../form';
 import {Button} from '../Button';
 
 const meta = {
-    title: 'Example/DateRangePicker',
+    title: 'Component/DateRangePicker',
     component: DateRangePicker,
     parameters: {
         // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout

@@ -23,6 +23,13 @@ import type {DisplayLevel} from '../utils';
 import {composeTailwindRenderProps, displayLevels, focusRingStyle, inputFieldStyle} from '../utils';
 import {Text} from '../Text/Text';
 
+//This file exports the following Components:
+// - Description
+// - FieldError
+// - Input
+// - Label
+// - TextField
+
 // https://react-spectrum.adobe.com/react-aria/Group.html#advanced-customization
 export function LabeledGroup({className, children}: {className?: string; children: React.ReactNode}) {
     const labelId = React.useId();
@@ -53,9 +60,9 @@ export function Label({
             className={twMerge(
                 'inline-block min-w-max text-pretty',
                 'group-disabled:opacity-50',
-                'dark:text-white',
+                'text-[var(--on-surface)]',
                 displayLevels[displayLevel],
-                requiredHint && "after:ms-0.5 after:text-destructive after:content-['*']",
+                requiredHint && "after:ms-0.5 after:text-[var(--destructive)] after:content-['*']",
                 props.className
             )}
         />
@@ -107,9 +114,9 @@ export function Description({className, ...props}: TextProps) {
             data-ui="description"
             slot="description"
             className={twMerge(
-                'block text-pretty text-base/6 text-muted sm:text-sm/6',
+                'block text-pretty text-base/6 text-[var(--on-surface-muted)] sm:text-sm/6',
                 'group-disabled:opacity-50',
-                'dark:text-white',
+                'text-[var(--on-surface)]',
                 className
             )}
         />
@@ -131,7 +138,10 @@ export function FieldError(props: FieldErrorProps) {
         <RACFieldError
             {...props}
             data-ui="errorMessage"
-            className={composeTailwindRenderProps(props.className, 'block text-base/6 text-destructive sm:text-sm/6')}
+            className={composeTailwindRenderProps(
+                props.className,
+                'block text-base/6 text-[var(--destructive)] sm:text-sm/6'
+            )}
         />
     );
 }
@@ -144,12 +154,11 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(function Inp
             className={composeTailwindRenderProps(props.className, [
                 'w-full rounded-lg border bg-inherit shadow-sm outline-none',
                 'px-2.5 py-[calc(theme(spacing[2.5])-1px)] sm:py-[calc(theme(spacing[1.5])-1px)]',
-                'text-base/6 placeholder:text-muted sm:text-sm/6',
-                'invalid:border-destructive',
+                'text-base/6 placeholder:text-[var(--on-surface-muted)] sm:text-sm/6',
+                'invalid:border-[var(--destructive)]',
                 'disabled:opacity-50',
-                '[&[readonly]]:bg-zinc-50',
-                'dark:[&[readonly]]:bg-white/10',
-                'dark:text-white',
+                '[&[readonly]]:bg-[var(--surface-muted)]',
+                'text-[var(--on-surface)]',
                 focusRingStyle,
             ])}
         />
@@ -162,11 +171,11 @@ export function TextArea(props: RACTextAreaProps) {
             {...props}
             className={composeTailwindRenderProps(props.className, [
                 'w-full rounded-lg border bg-inherit px-2.5 py-1 outline-none',
-                'text-base/6 placeholder:text-muted sm:text-sm/6 ',
+                'text-base/6 placeholder:text-[var(--on-surface-muted)] sm:text-sm/6 ',
                 'disabled:opacity-50',
-                'invalid:border-destructive',
-                '[&[readonly]]:bg-zinc-800/5',
-                'dark:[&[readonly]]:bg-white/10',
+                'invalid:border-[var(--destructive)]',
+                '[&[readonly]]:bg-[var(--surface-muted)]',
+                'text-[var(--on-surface)]',
                 focusRingStyle,
             ])}
         />

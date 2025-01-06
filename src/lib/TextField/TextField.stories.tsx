@@ -56,7 +56,7 @@ export const WithDisabled = () => {
 
 export const WithReadonly = () => {
     return (
-        <TextField name="email" type="email" isReadOnly>
+        <TextField name="email" type="email" isReadOnly value="hello">
             <Label>Email address</Label>
             <Description>Enter an email for us to contact you about your order.</Description>
             <Input placeholder="you@example.com" />
